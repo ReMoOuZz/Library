@@ -216,3 +216,16 @@ summaryInput.addEventListener("input", () => {
   const currentLength = summaryInput.value.length;
   summaryLength.textContent = `${currentLength} / 1000`;
 });
+
+const deleteAll = document.getElementById("delete");
+
+if (deleteAll) {
+  deleteAll.addEventListener("click", () => {
+    if (confirm("Are you sure you want to delete all books ?")) {
+      myLibrary = [];
+      saveLibrary();
+      displayBook();
+      updateStats();
+    }
+  });
+}

@@ -6,12 +6,28 @@
     <title>Library</title>
     <link rel="stylesheet" href="./features/reset.css" />
     <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./features/theme.css" />
     <script src="./main.js" defer></script>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <h1>My Library</h1>
+        <div class="header-left">
+          <h1>My Library</h1>
+        </div>
+        <div class="header-right">
+          <label for="theme">Theme</label>
+          <select name="theme" id="theme">
+            <option value="dark">Dark Romance</option>
+            <option value="romance">Romance</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="sci-fi">Sci-Fi</option>
+            <option value="horror">Horror</option>
+            <option value="mystery">Mystery</option>
+            <option value="thriller">Thriller</option>
+            <option value="biography">Biography</option>
+          </select>
+        </div>
       </div>
       <div class="main">
         <div class="book-container" id="book-container">
@@ -45,6 +61,11 @@
             <button id="add-book">+ Add Book</button>
           </div>
         </div>
+        <div class="elements">
+          <div class="delete">
+            <button id="delete">Delete All Books</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="add-book-popup" id="add-book-popup">
@@ -65,5 +86,15 @@
         </div>
       </div>
     </div>
+    <footer class="footer" id="footer">
+      <p>
+        <span
+          >&copy; 2025 My Labrary. All rights reserved | Developed by <strong>ReMoOuZz</strong>
+          <a href="https://github.com/ReMoOuZz" target="_blank" rel="noopener noreferrer"
+            ><img src="./images/github-mark-white.png" alt="GitHub Icon" width="20" height="20"
+          /></a>
+        </span>
+      </p>
+    </footer>
   </body>
 </html>
