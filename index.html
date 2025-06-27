@@ -23,16 +23,12 @@
             <option value="fantasy">Fantasy</option>
             <option value="sci-fi">Sci-Fi</option>
             <option value="horror">Horror</option>
-            <option value="mystery">Mystery</option>
             <option value="thriller">Thriller</option>
-            <option value="biography">Biography</option>
           </select>
         </div>
       </div>
       <div class="main">
-        <div class="book-container" id="book-container">
-          <div class="book-card"></div>
-        </div>
+        <div class="book-container" id="book-container"></div>
       </div>
       <div class="side">
         <div class="elements">
@@ -83,6 +79,30 @@
             <small id="summary-length">0/1000</small>
             <button type="submit">Add Book</button>
           </form>
+        </div>
+      </div>
+    </div>
+    <div class="confirm-delete-popup" id="confirm-delete-popup">
+      <div class="confirm-delete-popup-content">
+        <div class="top">
+          <h3>Delete all books?</h3>
+          <button id="close-button-delete">&times;</button>
+        </div>
+        <div class="bottom">
+          <button id="yes-button">Yes</button>
+          <button id="no-button">No</button>
+        </div>
+      </div>
+    </div>
+    <div class="add-image-popup" id="add-image-popup">
+      <div class="add-image-popup-content">
+        <div class="top">
+          <p>Do you want to add an image to replace the default one?</p>
+          <button id="close-button">&times;</button>
+        </div>
+        <div class="bottom">
+          <button id="add-image-button">Add</button>
+          <button id="cancel-image-button">Cancel</button>
         </div>
       </div>
     </div>

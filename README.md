@@ -1,8 +1,8 @@
 # My Library 📚
 
-A modern, responsive web application for managing your personal book collection. Built with vanilla JavaScript, HTML, and CSS, this library app provides an intuitive interface for tracking your reading progress and organizing your books with beautiful animations, smooth interactions, and a comprehensive CSS variables system.
+A modern, responsive web application for managing your personal book collection. Built with vanilla JavaScript, HTML, and CSS, this library app provides an intuitive interface for tracking your reading progress and organizing your books with beautiful animations, smooth interactions, a comprehensive CSS variables system, and multiple theme options.
 
-![Library Screenshot](images/Screenshot.png)
+![Library Screenshot](./images/Sceenshot.png)
 
 ## ✨ Features
 
@@ -18,6 +18,10 @@ A modern, responsive web application for managing your personal book collection.
 - **Form Validation**: Real-time character counting and validation for book summaries
 - **Error Handling**: Robust error handling with fallback images and graceful degradation
 - **Performance Optimized**: Efficient DOM manipulation and optimized API calls
+- **Multiple Theme System**: 5 different themes (Dark, Romance, Fantasy, Sci-Fi, Horror, Thriller)
+- **Library Management**: Delete all books with confirmation dialog
+- **Professional Footer**: Project information and links
+- **Confirmation Popups**: User-friendly confirmation dialogs for destructive actions
 
 ## 🚀 Getting Started
 
@@ -67,8 +71,20 @@ php -S localhost:8000
 - **View Details**: Hover over any book card to flip it and see complete details
 - **Change Status**: Use the dropdown to mark books as "Read" or "Unread"
 - **Delete Books**: Click the "×" button to remove books from your library
+- **Delete All Books**: Click "Delete All" button with confirmation dialog
 - **Scroll Summary**: Use mouse wheel for smooth scrolling in book summaries
 - **Automatic Saving**: All changes are automatically saved to localStorage
+
+### Changing Themes
+
+- **Theme Selector**: Use the dropdown in the header to switch between themes
+- **Available Themes**:
+  - **Dark**: Default dark theme with purple accents
+  - **Romance**: Soft pink theme with romantic colors
+  - **Fantasy**: Forest green theme with brown accents
+  - **Sci-Fi**: Blue futuristic theme
+  - **Horror**: Dark theme with blood red text
+  - **Thriller**: Dark theme with yellow accents
 
 ### Viewing Statistics
 
@@ -89,6 +105,7 @@ The sidebar displays real-time statistics that update instantly:
 - **Styling**: Custom CSS with CSS Grid, Flexbox, and comprehensive CSS Variables
 - **Animations**: CSS transitions, transforms, and 3D effects
 - **Performance**: Optimized DOM manipulation and efficient API calls
+- **Themes**: CSS variables system with 6 different theme configurations
 
 ### CSS Variables System
 
@@ -135,6 +152,7 @@ The project uses a comprehensive CSS variables system for consistent theming and
 Library/
 ├── features/
 │   └── reset.css          # CSS reset styles
+│   └── theme.css          # Theme configurations
 ├── images/
 │   ├── Screenshot.png     # Application screenshot
 │   └── default-image.png  # Default book cover
@@ -154,6 +172,8 @@ Library/
 - **Custom Scroll Handler**: Smooth scrolling in book summaries
 - **Form Validator**: Real-time validation and character counting
 - **Error Handler**: Graceful fallbacks for API failures
+- **Theme Manager**: Handles theme switching and persistence
+- **Confirmation Dialogs**: User-friendly popups for destructive actions
 
 ## 🎨 Design Features
 
@@ -167,6 +187,49 @@ Library/
 - **Hover Effects**: Interactive elements with visual feedback
 - **Gradient Backgrounds**: Beautiful gradient effects throughout the interface
 - **Box Shadows**: Layered shadows for depth and modern appearance
+- **Multiple Themes**: 6 different theme options with unique color schemes
+- **Confirmation Popups**: Professional confirmation dialogs
+- **Professional Footer**: Project information and branding
+
+## 🎭 Theme System
+
+### Available Themes
+
+1. **Dark Theme** (Default)
+
+   - Primary: Dark blue/purple
+   - Accent: Purple
+   - Text: Light gray
+
+2. **Romance Theme**
+
+   - Primary: Soft pink
+   - Accent: Red
+   - Text: Dark pink
+
+3. **Fantasy Theme**
+
+   - Primary: Forest green
+   - Secondary: Brown (tree trunk)
+   - Accent: Green
+   - Text: Light green
+
+4. **Sci-Fi Theme**
+
+   - Primary: Dark blue
+   - Accent: Cyan blue
+   - Text: Light blue
+
+5. **Horror Theme**
+
+   - Primary: Black
+   - Accent: Blood red
+   - Text: Blood red (except delete button)
+
+6. **Thriller Theme**
+   - Primary: Dark gray
+   - Accent: Yellow
+   - Text: White
 
 ## 🔧 Development
 
@@ -186,6 +249,11 @@ Library/
 - ✅ Error handling and graceful degradation
 - ✅ Performance optimizations
 - ✅ Comprehensive documentation
+- ✅ Multiple theme system (6 themes)
+- ✅ Library reset functionality
+- ✅ Confirmation popups
+- ✅ Professional footer
+- ✅ Theme-specific styling
 
 ### Planned Features
 
@@ -202,6 +270,8 @@ Library/
 - [ ] Offline support with Service Workers
 - [ ] Book recommendations
 - [ ] Reading time estimates
+- [ ] Custom theme creator
+- [ ] Theme import/export
 
 ## 🎯 Performance Optimizations
 
@@ -213,6 +283,7 @@ Library/
 - **Custom Scroll**: Optimized wheel event handling
 - **Error Handling**: Graceful fallbacks prevent app crashes
 - **Lazy Loading**: Images loaded on demand
+- **Theme Switching**: Efficient theme changes without page reload
 
 ## 🚀 Advanced Features
 
@@ -240,6 +311,20 @@ Library/
 - Required field validation
 - Visual feedback for user input
 
+### Theme System
+
+- CSS variables for easy customization
+- Theme persistence in localStorage
+- Smooth theme transitions
+- Theme-specific color schemes
+
+### Confirmation Dialogs
+
+- Professional popup design
+- User-friendly confirmation flow
+- Destructive action protection
+- Consistent with theme styling
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -258,6 +343,8 @@ Library/
 - Implement proper error handling
 - Optimize for performance
 - Add comprehensive documentation
+- Test theme compatibility
+- Follow the confirmation dialog pattern for destructive actions
 
 ## 📝 License
 

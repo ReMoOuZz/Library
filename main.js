@@ -42,7 +42,7 @@ async function fetchCoverUrByTitle(title) {
   }
 }
 
-function Book(title, author, pages, summary, read, image) {
+function Book(title, author, pages, summary, read, image, customImageRefused = false) {
   this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
@@ -50,6 +50,7 @@ function Book(title, author, pages, summary, read, image) {
   this.summary = summary;
   this.read = read;
   this.image = image;
+  this.customImageRefused = customImageRefused;
 }
 
 async function addBookToLibrary(title, author, pages, summary, read) {
@@ -63,6 +64,10 @@ async function addBookToLibrary(title, author, pages, summary, read) {
 function displayBook() {
   const container = document.getElementById("book-container");
   container.innerHTML = "";
+
+  const addImagePopup = document.getElementById("add-image-popup");
+  const addButton = document.getElementById("add-image-button");
+  const cancelButton = document.getElementById("cancel-image-button");
 
   myLibrary.forEach((book) => {
     const flipCard = document.createElement("div");
@@ -95,10 +100,21 @@ function displayBook() {
     const img = document.createElement("img");
     img.src = book.image;
     img.alt = `Cover of ${book.title}`;
-    img.onerror = function () {
-      this.src = "images/default-image.png";
-      this.classList.add("default-cover");
-    };
+
+    if (book.image === "images/default-image.png" && !book.customImageRefused) {
+      addImagePopup.classList.add("active");
+
+      addButton.onclick = () => {
+        addImagePopup.classList.remove("active");
+        openFileDialog(img, book);
+      };
+
+      cancelButton.onclick = () => {
+        book.customImageRefused = true;
+        saveLibrary();
+        addImagePopup.classList.remove("active");
+      };
+    }
 
     const title = document.createElement("h3");
     title.textContent = book.title;
@@ -171,6 +187,35 @@ function displayBook() {
   updateStats();
 }
 
+function openFileDialog(imgElement, book) {
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = "image/*";
+  fileInput.style.display = "none";
+
+  fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        imgElement.src = e.target.result;
+        imgElement.classList.remove("default-cover");
+
+        book.image = e.target.result;
+        book.customImageRefused = false;
+        saveLibrary();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  document.body.appendChild(fileInput);
+  fileInput.click();
+
+  fileInput.addEventListener("blur", () => {
+    document.body.removeChild(fileInput);
+  });
+}
+
 function updateStats() {
   const totalBooks = myLibrary.length;
   const totalPages = myLibrary.reduce((sum, book) => sum + book.pages, 0);
@@ -218,14 +263,55 @@ summaryInput.addEventListener("input", () => {
 });
 
 const deleteAll = document.getElementById("delete");
+const confirmDeletePopup = document.getElementById("confirm-delete-popup");
+const yesButton = document.getElementById("yes-button");
+const noButton = document.getElementById("no-button");
+const closeButtonDelete = document.getElementById("close-button-delete");
 
 if (deleteAll) {
   deleteAll.addEventListener("click", () => {
-    if (confirm("Are you sure you want to delete all books ?")) {
-      myLibrary = [];
-      saveLibrary();
-      displayBook();
-      updateStats();
-    }
+    confirmDeletePopup.classList.add("active");
   });
 }
+if (yesButton) {
+  yesButton.addEventListener("click", () => {
+    myLibrary = [];
+    saveLibrary();
+    displayBook();
+    updateStats();
+    confirmDeletePopup.classList.remove("active");
+  });
+}
+if (noButton) {
+  noButton.addEventListener("click", () => {
+    confirmDeletePopup.classList.remove("active");
+  });
+}
+if (closeButtonDelete) {
+  closeButtonDelete.addEventListener("click", () => {
+    confirmDeletePopup.classList.remove("active");
+  });
+}
+
+const themeSelector = document.getElementById("theme");
+const root = document.documentElement;
+
+const themeClasses = ["romance", "fantasy", "sci-fi", "horror", "thriller"];
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme && savedTheme !== "dark") {
+  root.classList.add(`theme-${savedTheme}`);
+  themeSelector.value = savedTheme;
+}
+
+themeSelector.addEventListener("change", () => {
+  themeClasses.forEach((t) => root.classList.remove(`theme-${t}`));
+
+  const theme = themeSelector.value;
+
+  if (theme !== "dark") {
+    root.classList.add(`theme-${theme}`);
+  }
+
+  localStorage.setItem("theme", theme);
+});
